@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-09-27T20:36:46.810092",
+  "total": 3,
+  "summary": {
+    "CRITICAL": 1,
+    "HIGH": 2,
+    "MEDIUM": 0,
+    "LOW": 0,
+    "INFO": 0
+  },
+  "findings": [
+    {
+      "type": "SAST: AWS credential exposure",
+      "severity": "CRITICAL",
+      "description": "AWS credential exposure",
+      "location": "C:\\Users\\User\\OneDrive\\Desktop\\test_app.py:5",
+      "evidence": "AWS_SECRET_KEY = \"AKIAIOSFODNN7EXAMPLE\"",
+      "remediation": "Rotate keys immediately; use IAM roles.",
+      "timestamp": "2026-09-27T20:36:46.809757"
+    },
+    {
+      "type": "SAST: Shell injection via os.system()",
+      "severity": "HIGH",
+      "description": "Shell injection via os.system()",
+      "location": "C:\\Users\\User\\OneDrive\\Desktop\\test_app.py:14",
+      "evidence": "os.system(f\"ping -c 1 {host}\")",
+      "remediation": "Use subprocess with a list of args, never shell=True with user input.",
+      "timestamp": "2026-09-27T20:36:46.809757"
+    },
+    {
+      "type": "SAST: Hardcoded secret key",
+      "severity": "HIGH",
+      "description": "Hardcoded secret key",
+      "location": "C:\\Users\\User\\OneDrive\\Desktop\\test_app.py:5",
+      "evidence": "AWS_SECRET_KEY = \"AKIAIOSFODNN7EXAMPLE\"",
+      "remediation": "Load secrets from environment variables.",
+      "timestamp": "2026-09-27T20:36:46.809757"
+    }
+  ]
+}

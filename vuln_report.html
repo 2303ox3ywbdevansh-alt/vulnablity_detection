@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vulnerability Report</title>
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0 }
+    body { font-family:'Segoe UI',Arial,sans-serif; background:#0f1117; color:#e0e0e0 }
+    header { background:linear-gradient(135deg,#1a1a2e,#16213e); padding:30px 40px;
+              border-bottom:2px solid #e74c3c }
+    header h1 { font-size:2em; color:#e74c3c }
+    header p  { color:#888; margin-top:5px }
+    .container { max-width:1400px; margin:0 auto; padding:30px 40px }
+    .summary { display:flex; gap:20px; margin:20px 0 30px }
+    .card { background:#1e2130; border-radius:8px; padding:20px 25px; flex:1; text-align:center }
+    .card .count { font-size:2.5em; font-weight:700 }
+    .card .label { font-size:0.9em; color:#888; margin-top:4px; letter-spacing:1px }
+    table { width:100%; border-collapse:collapse; background:#1e2130; border-radius:10px;
+             overflow:hidden }
+    th { background:#16213e; padding:12px 15px; text-align:left; color:#aaa;
+          font-size:0.85em; letter-spacing:1px; text-transform:uppercase }
+    td { padding:12px 15px; border-bottom:1px solid #2a2d3e; vertical-align:top }
+    tr:hover td { background:#252840 }
+    .badge { padding:3px 10px; border-radius:12px; font-size:0.78em;
+              font-weight:700; color:#fff; letter-spacing:0.5px }
+    h2 { color:#e0e0e0; margin-bottom:15px; font-size:1.3em }
+    footer { text-align:center; color:#555; padding:30px; font-size:0.85em }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔐 Vulnerability Detection Report</h1>
+    <p>Generated: 2026-09-27 20:36:46 &nbsp;|&nbsp;
+       Total findings: <strong>3</strong></p>
+  </header>
+  <div class="container">
+    <h2>Summary</h2>
+    <div class="summary">
+        <div class="card" style="border-left:5px solid #e74c3c">
+          <div class="count" style="color:#e74c3c">1</div>
+          <div class="label">CRITICAL</div>
+        </div>
+        <div class="card" style="border-left:5px solid #e67e22">
+          <div class="count" style="color:#e67e22">2</div>
+          <div class="label">HIGH</div>
+        </div>
+        <div class="card" style="border-left:5px solid #f1c40f">
+          <div class="count" style="color:#f1c40f">0</div>
+          <div class="label">MEDIUM</div>
+        </div>
+        <div class="card" style="border-left:5px solid #3498db">
+          <div class="count" style="color:#3498db">0</div>
+          <div class="label">LOW</div>
+        </div>
+        <div class="card" style="border-left:5px solid #95a5a6">
+          <div class="count" style="color:#95a5a6">0</div>
+          <div class="label">INFO</div>
+        </div></div>
+    <h2>Findings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Severity</th><th>Type</th><th>Description</th>
+          <th>Location</th><th>Evidence</th><th>Remediation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge" style="background:#e74c3c">CRITICAL</span></td>
+          <td><strong>SAST: AWS credential exposure</strong></td>
+          <td>AWS credential exposure</td>
+          <td style="word-break:break-all;font-size:0.85em">C:\Users\User\OneDrive\Desktop\test_app.py:5</td>
+          <td style="font-family:monospace;font-size:0.8em;color:#e74c3c">AWS_SECRET_KEY = "AKIAIOSFODNN7EXAMPLE"</td>
+          <td style="color:#27ae60;font-size:0.85em">Rotate keys immediately; use IAM roles.</td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#e67e22">HIGH</span></td>
+          <td><strong>SAST: Shell injection via os.system()</strong></td>
+          <td>Shell injection via os.system()</td>
+          <td style="word-break:break-all;font-size:0.85em">C:\Users\User\OneDrive\Desktop\test_app.py:14</td>
+          <td style="font-family:monospace;font-size:0.8em;color:#e74c3c">os.system(f"ping -c 1 {host}")</td>
+          <td style="color:#27ae60;font-size:0.85em">Use subprocess with a list of args, never shell=True with user input.</td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#e67e22">HIGH</span></td>
+          <td><strong>SAST: Hardcoded secret key</strong></td>
+          <td>Hardcoded secret key</td>
+          <td style="word-break:break-all;font-size:0.85em">C:\Users\User\OneDrive\Desktop\test_app.py:5</td>
+          <td style="font-family:monospace;font-size:0.8em;color:#e74c3c">AWS_SECRET_KEY = "AKIAIOSFODNN7EXAMPLE"</td>
+          <td style="color:#27ae60;font-size:0.85em">Load secrets from environment variables.</td>
+        </tr></tbody>
+    </table>
+  </div>
+  <footer>Vulnerability Detection Tool v1.0 — For authorized security testing only</footer>
+</body>
+</html>

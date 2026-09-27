@@ -1,0 +1,175 @@
+{
+  "generated_at": "2026-09-27T20:25:52.382105",
+  "total": 18,
+  "summary": {
+    "CRITICAL": 8,
+    "HIGH": 2,
+    "MEDIUM": 0,
+    "LOW": 6,
+    "INFO": 2
+  },
+  "findings": [
+    {
+      "type": "SAST: Use of eval() \u2013 Remote Code Execution risk",
+      "severity": "CRITICAL",
+      "description": "Use of eval() \u2013 Remote Code Execution risk",
+      "location": "vuln_detector.py:409",
+      "evidence": "(r\"eval\\s*\\(\",                  \"CRITICAL\", \"Use of eval() \u2013 Remote Code Execution risk\",        \"Av",
+      "remediation": "Avoid eval(); use ast.literal_eval() or safer alternatives.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Use of eval() \u2013 Remote Code Execution risk",
+      "severity": "CRITICAL",
+      "description": "Use of eval() \u2013 Remote Code Execution risk",
+      "location": "vuln_detector.py:427",
+      "evidence": "(r\"eval\\s*\\(\",                  \"CRITICAL\", \"Use of eval() \u2013 XSS / RCE risk\",                   \"Nev",
+      "remediation": "Avoid eval(); use ast.literal_eval() or safer alternatives.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Use of eval() \u2013 Remote Code Execution risk",
+      "severity": "CRITICAL",
+      "description": "Use of eval() \u2013 Remote Code Execution risk",
+      "location": "vuln_detector.py:440",
+      "evidence": "(r\"eval\\s*\\(\",                  \"CRITICAL\", \"eval() \u2013 Remote Code Execution\",                   \"Nev",
+      "remediation": "Avoid eval(); use ast.literal_eval() or safer alternatives.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Use of exec() \u2013 Remote Code Execution risk",
+      "severity": "CRITICAL",
+      "description": "Use of exec() \u2013 Remote Code Execution risk",
+      "location": "vuln_detector.py:410",
+      "evidence": "(r\"exec\\s*\\(\",                  \"CRITICAL\", \"Use of exec() \u2013 Remote Code Execution risk\",        \"Av",
+      "remediation": "Avoid exec() with untrusted input.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Use of exec() \u2013 Remote Code Execution risk",
+      "severity": "CRITICAL",
+      "description": "Use of exec() \u2013 Remote Code Execution risk",
+      "location": "vuln_detector.py:453",
+      "evidence": "(r\"Runtime\\.getRuntime\\(\\)\\.exec\",\"CRITICAL\",\"Runtime.exec() \u2013 command injection risk\",         \"Use",
+      "remediation": "Avoid exec() with untrusted input.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: AWS credential exposure",
+      "severity": "CRITICAL",
+      "description": "AWS credential exposure",
+      "location": "vuln_detector.py:464",
+      "evidence": "(r\"(?i)(aws_access_key_id|aws_secret|AKIA[0-9A-Z]{16})\",",
+      "remediation": "Rotate keys immediately; use IAM roles.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Private key in source code",
+      "severity": "CRITICAL",
+      "description": "Private key in source code",
+      "location": "vuln_detector.py:466",
+      "evidence": "(r\"(?i)(private.?key|BEGIN RSA|BEGIN EC|BEGIN OPENSSH)\",",
+      "remediation": "Remove key from source; store in secrets manager.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Private key in source code",
+      "severity": "CRITICAL",
+      "description": "Private key in source code",
+      "location": "vuln_detector.py:467",
+      "evidence": "\"CRITICAL\", \"Private key in source code\",  \"Remove key from source; store in secrets manager.\"),",
+      "remediation": "Remove key from source; store in secrets manager.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Shell injection via os.system()",
+      "severity": "HIGH",
+      "description": "Shell injection via os.system()",
+      "location": "vuln_detector.py:411",
+      "evidence": "(r\"os\\.system\\s*\\(\",            \"HIGH\",     \"Shell injection via os.system()\",                   \"Us",
+      "remediation": "Use subprocess with a list of args, never shell=True with user input.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Unsafe yaml.load() \u2013 use yaml.safe_load()",
+      "severity": "HIGH",
+      "description": "Unsafe yaml.load() \u2013 use yaml.safe_load()",
+      "location": "vuln_detector.py:422",
+      "evidence": "(r\"yaml\\.load\\s*\\(\",            \"HIGH\",     \"Unsafe yaml.load() \u2013 use yaml.safe_load()\",        \"Rep",
+      "remediation": "Replace yaml.load() with yaml.safe_load().",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: File write operation \u2013 verify path sanitization",
+      "severity": "LOW",
+      "description": "File write operation \u2013 verify path sanitization",
+      "location": "vuln_detector.py:605",
+      "evidence": "with open(output_path, \"w\") as fp:",
+      "remediation": "Ensure file paths are sanitized to prevent path traversal.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: File write operation \u2013 verify path sanitization",
+      "severity": "LOW",
+      "description": "File write operation \u2013 verify path sanitization",
+      "location": "vuln_detector.py:700",
+      "evidence": "with open(output_path, \"w\", encoding=\"utf-8\") as fp:",
+      "remediation": "Ensure file paths are sanitized to prevent path traversal.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: assert statement (stripped with -O flag)",
+      "severity": "LOW",
+      "description": "assert statement (stripped with -O flag)",
+      "location": "vuln_detector.py:423",
+      "evidence": "(r\"assert\\s+\",                  \"LOW\",      \"assert statement (stripped with -O flag)\",          \"Us",
+      "remediation": "Use proper error handling instead of assert.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Plain HTTP URL",
+      "severity": "LOW",
+      "description": "Plain HTTP URL",
+      "location": "vuln_detector.py:10",
+      "evidence": "python vuln_detector.py --url http://target.com",
+      "remediation": "Use HTTPS for all URLs.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Plain HTTP URL",
+      "severity": "LOW",
+      "description": "Plain HTTP URL",
+      "location": "vuln_detector.py:11",
+      "evidence": "python vuln_detector.py --url http://target.com --scan-ports",
+      "remediation": "Use HTTPS for all URLs.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Plain HTTP URL",
+      "severity": "LOW",
+      "description": "Plain HTTP URL",
+      "location": "vuln_detector.py:468",
+      "evidence": "(r\"(?i)http://[^\\s\\\"']+\",",
+      "remediation": "Use HTTPS for all URLs.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Security-related TODO comment",
+      "severity": "INFO",
+      "description": "Security-related TODO comment",
+      "location": "vuln_detector.py:470",
+      "evidence": "(r\"(?i)(TODO|FIXME|HACK|XXX).*(?:vuln|secur|auth|sql|xss|inject)\",",
+      "remediation": "Address security TODOs before deploying.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    },
+    {
+      "type": "SAST: Security-related TODO comment",
+      "severity": "INFO",
+      "description": "Security-related TODO comment",
+      "location": "vuln_detector.py:471",
+      "evidence": "\"INFO\",     \"Security-related TODO comment\",\"Address security TODOs before deploying.\"),",
+      "remediation": "Address security TODOs before deploying.",
+      "timestamp": "2026-09-27T20:25:52.381166"
+    }
+  ]
+}
